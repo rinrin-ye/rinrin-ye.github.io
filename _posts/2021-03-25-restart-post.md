@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title:  "Restart Post"
 date:   2021-03-25 23:15:23 +0900
 categories: jekyll update
