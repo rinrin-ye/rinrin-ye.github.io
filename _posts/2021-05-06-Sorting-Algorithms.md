@@ -221,3 +221,153 @@ public static int[] descending(int n){
 
 ------
 
+
+## 6. 자바코드
+
+```java
+import java.util.Random;
+import java.util.Arrays;
+import java.util.Scanner;
+
+public class Sort {
+    public static int[] BubbleSort(int[] A) {
+        count = 0;
+        for (int pass = 1; pass <= A.length - 1; pass++) {
+            for (int i = 1; i <= A.length - pass; i++) {
+                if (A[i - 1] > A[i]) {
+                    int temp = A[i - 1];
+                    A[i - 1] = A[i];
+                    A[i] = temp;
+                }
+            }
+        }
+        return A;
+    }
+
+    public static int[] SelectionSort(int[] A) {
+        for (int i = 0; i <= A.length - 2; i++) {
+            int min = i;
+            for (int j = i + 1; j <= A.length - 1; j++) {
+                if (A[j] < A[min]) {
+                    min = j;
+                }
+            }
+            int temp = A[i];
+            A[i] = A[min];
+            A[min] = temp;
+        }
+        return A;
+    }
+
+    public static int[] InsertionSort(int[] A) {
+        for (int i = 1; i <= A.length - 1; i++) {
+            int c = A[i];
+            int j = i - 1;
+            count++;
+            while (j >= 0 && A[j] > c) {
+                int temp = A[j + 1];
+                A[j + 1] = A[j];
+                A[j] = temp;
+                j--;
+            }
+            A[j + 1] = c;
+        }
+        return A;
+    }
+
+    public static int[] ShellSort(int[] A) {
+        int[] gap = {1750, 701, 301, 132, 57, 23, 10, 4, 1};
+        int k;
+        for (k = 0; k < gap.length; k++) {
+            if (A.length > gap[k]) {
+                break;
+            }
+        }
+        for (int h = k; h < gap.length; h++) {
+            int g = gap[h];
+            for (int i = g; i < A.length; i++) {
+                int c = A[i];
+                int j = i;
+                while (j >= g && A[j - g] > c) {
+                    int temp = A[j];
+                    A[j] = A[j - g];
+                    A[j - g] = temp;
+                    j -= g;
+                }
+                A[j] = c;
+            }
+        }
+        return A;
+    }
+
+    public static int[] random(int n) {
+        Random r = new Random();
+        int[] A = new int[n];
+        for (int i = 0; i < n; i++) {
+            A[i] = r.nextInt(100);
+        }
+        return A;
+    }
+
+    public static int[] somesort(int n) {
+        Random r = new Random();
+        int[] A = new int[n];
+        for (int i = 0; i < n; i++) {
+            A[i] = r.nextInt(100);
+        }
+        A = BubbleSort(A);
+        for (int i = 0; i < (n * 0.1); i++) {
+            int a = r.nextInt(A.length);
+            int b = r.nextInt(A.length);
+            int temp = A[a];
+            A[a] = A[b];
+            A[b] = temp;
+        }
+        return A;
+    }
+
+    public static int[] descending(int n) {
+        Random r = new Random();
+        int[] A = new int[n];
+        for (int i = 0; i < n; i++) {
+            A[i] = r.nextInt(100);
+        }
+        for (int pass = 1; pass <= A.length - 1; pass++) {
+            for (int i = 1; i <= A.length - pass; i++) {
+                if (A[i - 1] < A[i]) {
+                    int temp = A[i - 1];
+                    A[i - 1] = A[i];
+                    A[i] = temp;
+                }
+            }
+        }
+        return A;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("배열의 크기를 입력하시오.");
+        int len = sc.nextInt();
+        int[] A = random(len);
+        System.out.println("입력 : 랜덤한 배열");
+        System.out.println(Arrays.toString(A));
+        int[] B = ShellSort(A); //다른 정렬을 원할시 여기서 ShellSort 대신 BubbleSort/SelectionSort/SelectionSort 메소드를 사용하면 된다.
+        System.out.println("ShellSort");
+        System.out.println(Arrays.toString(B));
+
+        A = somesort(len);
+        System.out.println("입력 : 어느정도 정렬된 배열");
+        System.out.println(Arrays.toString(A));
+        B = ShellSort(A);
+        System.out.println("ShellSort");
+        System.out.println(Arrays.toString(B));
+
+        A = descending(len);
+        System.out.println("입력 : 내림차순 정렬된 배열");
+        System.out.println(Arrays.toString(A));
+        B = ShellSort(A);
+        System.out.println("ShellSort");
+        System.out.println(Arrays.toString(B));
+    }
+}
+```
