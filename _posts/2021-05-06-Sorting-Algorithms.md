@@ -231,7 +231,6 @@ import java.util.Scanner;
 
 public class Sort {
     public static int[] BubbleSort(int[] A) {
-        count = 0;
         for (int pass = 1; pass <= A.length - 1; pass++) {
             for (int i = 1; i <= A.length - pass; i++) {
                 if (A[i - 1] > A[i]) {
@@ -263,7 +262,6 @@ public class Sort {
         for (int i = 1; i <= A.length - 1; i++) {
             int c = A[i];
             int j = i - 1;
-            count++;
             while (j >= 0 && A[j] > c) {
                 int temp = A[j + 1];
                 A[j + 1] = A[j];
@@ -371,3 +369,6 @@ public class Sort {
     }
 }
 ```
+
+## 7, 코드 결과
+<img src="https://user-images.githubusercontent.com/80517298/117291164-9ce6a780-aea9-11eb-916f-0c2f577d6f84.jpg" alt="정렬"  width="400" height="250" />
