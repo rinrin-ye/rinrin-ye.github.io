@@ -169,6 +169,7 @@ public static int[] descending(int n){
     return A;
 }
 ```
+- 코드 실행 시간을 측정하기엔 어려움이 있어 알고리즘이 돌아가는 동안 배열의 원소 간에 비교 횟수를 세어 소요 시간을 비교하였다.
 
 <img src="https://user-images.githubusercontent.com/80517298/117284525-e206db80-aea1-11eb-9ef9-2507d15a9d7d.jpg" alt="버블정렬 1" width="300" height="150" />
 
